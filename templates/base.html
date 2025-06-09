@@ -1,0 +1,141 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BunonMart{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f8f8f8; 
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        header, footer { 
+            background-color: #333; 
+            color: white; 
+            padding: 1rem; 
+            text-align: center; 
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            /* margin: 0 auto; */
+            padding: 0 1rem;
+        }
+        headr { 
+            display: flex; 
+            flex-grow: 1;
+            justify-content: left;
+        }
+        headr a { 
+            /* margin: 0 1rem;  */
+            color: white; 
+            text-decoration: none;
+        }
+        nav { 
+            display: flex; 
+            flex-grow: 1;
+            justify-content: center;
+        }
+        nav a { 
+            margin: 0 1rem; 
+            color: white; 
+            text-decoration: none; 
+        }
+        .header-right {
+            display: flex;
+            gap: 1rem;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        main { 
+            padding: 2rem; 
+            max-width: 1200px;
+            /* margin: 0 auto; */
+        }
+        @media (max-width: 600px) {
+            .header-container {
+                flex-direction: column;
+            }
+            nav {
+                flex-direction: column;
+                margin: 1rem 0;
+            }
+            nav a { 
+                display: block; 
+                margin: 0.5rem 0; 
+            }
+            .header-right {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <headr>
+                <a href="/"><h1>BunonMart</h1></a>
+            </headr>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/men/">Men</a>
+                <a href="/women/">Women</a>
+                <a href="/kids/">Kids</a>
+                <a href="/eid/">Eid Collection</a>
+                <a href="/contact/">Contact</a>
+                <a href="{% url 'account_login' %}">{% trans "Login" %}</a> |
+                <a href="{% url 'register' %}">{% trans "Register" %}</a>
+            </nav>
+            <div class="header-right">
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <form id="language-selector" action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <select name="language" onchange="this.form.submit()">
+                        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                        <option value="bn" {% if LANGUAGE_CODE == 'bn' %}selected{% endif %}>বাংলা</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BunonMart. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggleTheme = () => {
+            document.body.classList.toggle('dark-mode');
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>

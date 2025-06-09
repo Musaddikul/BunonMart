@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Home" %} | Bunon{% endblock %}
+
+{% block content %}
+<div class="homepage">
+    <section class="hero">
+        <h2>{% trans "Welcome to our Fashion Store" %}</h2>
+        <p>{% trans "Your destination for handmade clothing and unique custom designs." %}</p>
+    </section>
+
+    <section class="featured">
+        <h3>{% trans "Editor's Choice" %}</h3>
+        <!-- Future dynamic content here -->
+        <div class="featured-products">
+            <!-- Example static product (replace with dynamic loop later) -->
+            <div class="product-card">
+                <img src="{% static 'images/sample.jpg' %}" alt="{% trans 'Sample Product' %}">
+                <p>{% trans "Beautiful Handcrafted Kurti" %}</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
