@@ -105,8 +105,6 @@ WSGI_APPLICATION = "bunon.wsgi.application"
 #     }
 # }
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-engine = create_engine(DATABASE_URL)
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
