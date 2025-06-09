@@ -1,5 +1,6 @@
 from pathlib import Path
 import dj_database_url
+from sqlalchemy import create_engine
 from decouple import config
 from django.utils.translation import gettext_lazy as _
 import os
@@ -100,6 +101,8 @@ WSGI_APPLICATION = "bunon.wsgi.application"
 #     }
 # }
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
