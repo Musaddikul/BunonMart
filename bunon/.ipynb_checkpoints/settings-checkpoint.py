@@ -1,7 +1,7 @@
 from pathlib import Path
 import dj_database_url
 from sqlalchemy import create_engine
-from decouple import config
+from decouple import config, UndefinedValueError
 from django.utils.translation import gettext_lazy as _
 import os
 
@@ -10,7 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = "django-insecure-(_7=g=s986a#bnl03c+wm-68r2h-sup=mujaw*_net95by6y=6"
 # DEBUG = True
 
-SECRET_KEY = config('SECRET_KEY')
+try:
+    SECRET_KEY = config('SECRET_KEY')
+except UndefinedValueError:
+    from django.core.management.utils import get_random_secret_key
+    SECRET_KEY = get_random_secret_key()
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 CSRF_COOKIE_SECURE = False
