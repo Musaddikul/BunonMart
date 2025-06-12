@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: BunonMart
+    env: python
+    plan: free  # or starter/pro depending on your needs
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn bunonmart.wsgi:application
+    autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+        sync: false  # manually set this in the dashboard
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        value: bunonmart.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bunonmart-db
+          property: connectionString
+
+databases:
+  - name: bunonmart-db
+    plan: free
+    databaseName: bunonmart_db
+    user: bunonmart_db_user

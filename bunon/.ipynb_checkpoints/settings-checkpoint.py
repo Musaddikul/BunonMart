@@ -7,15 +7,13 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY = "django-insecure-(_7=g=s986a#bnl03c+wm-68r2h-sup=mujaw*_net95by6y=6"
-# DEBUG = True
-
 try:
     SECRET_KEY = config('SECRET_KEY')
 except UndefinedValueError:
     from django.core.management.utils import get_random_secret_key
     SECRET_KEY = get_random_secret_key()
 DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
@@ -24,8 +22,10 @@ SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
+# SECRET_KEY = "django-insecure-(_7=g=s986a#bnl03c+wm-68r2h-sup=mujaw*_net95by6y=6"
+# DEBUG = True
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['bunonmart.onrender.com', 'bunonmart.com']
+# ALLOWED_HOSTS = ['bunonmart.onrender.com', 'bunonmart.com']
 
 # Application definition
 
@@ -92,7 +92,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "bunon.wsgi.application"
+WSGI_APPLICATION = "bunonmart.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/stable/ref/settings/#databases
