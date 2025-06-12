@@ -1,7 +1,7 @@
 from pathlib import Path
 import dj_database_url
 from sqlalchemy import create_engine
-from decouple import config, UndefinedValueError
+from decouple import config, Csv, UndefinedValueError
 from django.utils.translation import gettext_lazy as _
 import os
 
