@@ -17,9 +17,12 @@ except UndefinedValueError:
     SECRET_KEY = get_random_secret_key()
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 ALLOWED_HOSTS = ['bunonmart.onrender.com', 'bunonmart.com']
@@ -106,7 +109,7 @@ WSGI_APPLICATION = "bunon.wsgi.application"
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # Password validation
