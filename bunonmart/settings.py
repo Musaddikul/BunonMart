@@ -12,10 +12,10 @@ try:
 except UndefinedValueError:
     from django.core.management.utils import get_random_secret_key
     SECRET_KEY = get_random_secret_key()
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True #config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
@@ -24,8 +24,7 @@ SECURE_HSTS_PRELOAD = True
 
 # SECRET_KEY = "django-insecure-(_7=g=s986a#bnl03c+wm-68r2h-sup=mujaw*_net95by6y=6"
 # DEBUG = True
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['bunonmart.onrender.com', 'bunonmart.com']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bunonmart.onrender.com', 'bunonmart.com']
 
 # Application definition
 
@@ -74,7 +73,8 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware'
 ]
 
-ROOT_URLCONF = "bunon.urls"
+ROOT_URLCONF = "bunonmart.urls"
+WSGI_APPLICATION = 'bunonmart.wsgi.application'
 
 TEMPLATES = [
     {
@@ -209,3 +209,21 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': ['User.Read'],
     },
 }
+
+
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG' if DEBUG else 'WARNING',
+    },
+}
+
