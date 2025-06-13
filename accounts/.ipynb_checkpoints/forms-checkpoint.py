@@ -1,13 +1,12 @@
+# accounts/forms.py
+from allauth.account.forms import SignupForm
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
 
-class CustomUserCreationForm(UserCreationForm):
-    location = forms.CharField(required=False, max_length=255, label="Location")
+class CustomSignupForm(SignupForm):
+    location = forms.CharField(max_length=255, required=False)
 
-    class Meta:
-        model = CustomUser
-        fields = ("username", "email", "password1", "password2", "location")
-
-class CustomLoginForm(AuthenticationForm):
-    remember_me = forms.BooleanField(required=False, label="Remember Me")
+    def save(self, request):
+        user = super().save(request)
+        user.location = self.cleaned_data.get('location')
+        user.save()
+        return user

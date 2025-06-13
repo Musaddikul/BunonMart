@@ -54,11 +54,13 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 ACCOUNT_FORMS = {
-    'signup': 'accounts.forms.CustomUserCreationForm',
+    'signup': 'accounts.forms.CustomSignupForm',
 }
 
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -173,11 +175,6 @@ AUTHENTICATION_BACKENDS = (
     'django.core.mail.backends.console.EmailBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 
 # Email backend for development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

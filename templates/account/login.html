@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+
+{% block content %}
+<div class="login-container">
+    <h2>{% trans "Sign In to Your Account" %}</h2>
+    <form method="post" class="form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">{% trans "Sign In" %}</button>
+    </form>
+
+    <hr>
+
+    <h4>{% trans "Or Sign In Using" %}</h4>
+    <div class="social-buttons">
+        <a href="{% provider_login_url 'google' %}" class="btn btn-google">Google</a>
+        <a href="{% provider_login_url 'facebook' %}" class="btn btn-facebook">Facebook</a>
+        <a href="{% provider_login_url 'microsoft' %}" class="btn btn-microsoft">Microsoft</a>
+    </div>
+</div>
+{% endblock %}
