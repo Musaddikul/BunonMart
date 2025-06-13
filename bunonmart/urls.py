@@ -1,5 +1,4 @@
 # bunonmart/urls.py
-
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
@@ -20,8 +19,9 @@ urlpatterns += i18n_patterns(
     path('kids/', views.kids_page, name='kids'),
     path('eid/', views.eid_collection, name='eid'),
     path('contact/', views.contact, name='contact'),
-    path('accounts/', include('accounts.urls')),  # your custom routes
-    path('accounts/', include('allauth.urls')),   # django-allauth
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('shop/', include('shop.urls')),
 )
 
 # Serve media files in development

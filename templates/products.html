@@ -1,0 +1,43 @@
+<!-- templates/products.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-2xl font-semibold mb-4">Our Products</h2>
+
+  <!-- Search & Filters -->
+  <form method="get" class="mb-6">
+    <div class="flex flex-wrap gap-4">
+      <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Search products..." class="p-2 border rounded w-full sm:w-64">
+
+      <select name="sort" class="p-2 border rounded">
+        <option value="">Sort By</option>
+        <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>Price: Low to High</option>
+        <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>Price: High to Low</option>
+        <option value="newest" {% if request.GET.sort == 'newest' %}selected{% endif %}>Newest</option>
+      </select>
+
+      <select name="category" class="p-2 border rounded">
+        <option value="">All Categories</option>
+        {% for category in categories %}
+        <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Apply</button>
+    </div>
+  </form>
+
+  <!-- Product Grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    {% for product in products %}
+    <div class="border rounded shadow p-2">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover rounded">
+      <h3 class="mt-2 font-semibold text-lg">{{ product.name }}</h3>
+      <p class="text-sm text-gray-600">{{ product.price }} BDT</p>
+    </div>
+    {% empty %}
+    <p>No products found.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
