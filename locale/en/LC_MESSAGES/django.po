@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-08 14:14+0600\n"
+"POT-Creation-Date: 2025-06-12 23:21+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\bunonmart\settings.py:138
+msgid "English"
+msgstr ""
+
+#: .\bunonmart\settings.py:139
+msgid "Bengali"
+msgstr ""
+
+#: .\templates\accounts\login.html:5 .\templates\accounts\login.html:9
+#: .\templates\accounts\login.html:31
+msgid "Sign In"
+msgstr ""
+
+#: .\templates\accounts\login.html:19
+#, python-format
+msgid ""
+"If you have not created an account yet, then please %(link)ssign "
+"up%(end_link)s first."
+msgstr ""
+
+#: .\templates\accounts\login.html:42
+msgid "Sign in with a passkey"
+msgstr ""
+
+#: .\templates\accounts\login.html:47
+msgid "Send me a sign-in code"
+msgstr ""
+
+#: .\templates\base.html:100 .\templates\registration\login.html:4
+#: .\templates\registration\login.html:5
+msgid "Login"
+msgstr ""
+
+#: .\templates\base.html:101 .\templates\registration\register.html:4
+#: .\templates\registration\register.html:5
+msgid "Register"
+msgstr ""
+
 #: .\templates\home.html:5
 msgid "Home"
 msgstr ""
@@ -39,4 +78,12 @@ msgstr ""
 
 #: .\templates\home.html:21
 msgid "Beautiful Handcrafted Kurti"
+msgstr ""
+
+#: .\templates\registration\login.html:6
+msgid "Or login using"
+msgstr ""
+
+#: .\templates\registration\register.html:6
+msgid "Or sign up using"
 msgstr ""

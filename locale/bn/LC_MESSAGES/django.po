@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-09 10:29+0600\n"
+"POT-Creation-Date: 2025-06-12 23:59+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\bunon\settings.py:119
+#: .\bunonmart\settings.py:138
 msgid "English"
 msgstr ""
 
-#: .\bunon\settings.py:120
+#: .\bunonmart\settings.py:139
 msgid "Bengali"
+msgstr "বাংলা"
+
+#: .\templates\accounts\login.html:5 .\templates\accounts\login.html:9
+#: .\templates\accounts\login.html:31
+msgid "Sign In"
+msgstr "সাইন ইন"
+
+#: .\templates\accounts\login.html:19
+#, python-format
+msgid ""
+"If you have not created an account yet, then please %(link)ssign "
+"up%(end_link)s first."
 msgstr ""
 
-#: .\templates\base.html:100 .\templates\registration\login.html:4
+#: .\templates\accounts\login.html:42
+msgid "Sign in with a passkey"
+msgstr "পাসকি এর মাধ্যমে সাইন ইন করুন"
+
+#: .\templates\accounts\login.html:47
+msgid "Send me a sign-in code"
+msgstr "সাইন ইন কোড পাঠান"
+
+#: .\templates\base.html:8 .\templates\base.html:93
+msgid "BunonMart"
+msgstr ""
+
+#: .\templates\base.html:96 .\templates\home.html:5
+msgid "Home"
+msgstr "হোম"
+
+#: .\templates\base.html:97
+msgid "Men"
+msgstr "পুরুষ"
+
+#: .\templates\base.html:98
+msgid "Women"
+msgstr "মহিলা"
+
+#: .\templates\base.html:99
+msgid "Kids"
+msgstr "ছোটো বাচ্চা"
+
+#: .\templates\base.html:100
+msgid "Eid Collection"
+msgstr "ঈদ কালেকশন"
+
+#: .\templates\base.html:101
+msgid "Contact"
+msgstr "যোগাযোগ করুন"
+
+#: .\templates\base.html:102 .\templates\registration\login.html:4
 #: .\templates\registration\login.html:5
 msgid "Login"
-msgstr ""
+msgstr "লগইন"
 
-#: .\templates\base.html:101 .\templates\registration\register.html:4
+#: .\templates\base.html:103 .\templates\registration\register.html:4
 #: .\templates\registration\register.html:5
 msgid "Register"
-msgstr ""
-
-#: .\templates\home.html:5
-msgid "Home"
-msgstr ""
+msgstr "রেজিস্টার"
 
 #: .\templates\home.html:10
 msgid "Welcome to our Fashion Store"
-msgstr ""
+msgstr "স্বাগতম আমাদের ফ্যাশন স্টোরে"
 
 #: .\templates\home.html:11
 msgid "Your destination for handmade clothing and unique custom designs."
@@ -54,7 +98,7 @@ msgstr ""
 
 #: .\templates\home.html:20
 msgid "Sample Product"
-msgstr ""
+msgstr "নমুনা পণ্য"
 
 #: .\templates\home.html:21
 msgid "Beautiful Handcrafted Kurti"

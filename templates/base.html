@@ -1,9 +1,10 @@
 {% load i18n %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}BunonMart{% endblock %}</title>
+    <title>{% block title %}{% trans "BunonMart" %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body { 
@@ -37,7 +38,7 @@
         }
         headr a { 
             /* margin: 0 1rem;  */
-            color: white; 
+            color: white;
             text-decoration: none;
         }
         nav { 
@@ -88,15 +89,15 @@
     <header>
         <div class="header-container">
             <headr>
-                <a href="/"><h1>BunonMart</h1></a>
+                <a href="/"><h1>{% trans "BunonMart" %}</h1></a>
             </headr>
             <nav>
-                <a href="/">Home</a>
-                <a href="/men/">Men</a>
-                <a href="/women/">Women</a>
-                <a href="/kids/">Kids</a>
-                <a href="/eid/">Eid Collection</a>
-                <a href="/contact/">Contact</a>
+                <a href="/">{% trans "Home" %}</a>
+                <a href="/men/">{% trans "Men" %}</a>
+                <a href="/women/">{% trans "Women" %}</a>
+                <a href="/kids/">{% trans "Kids" %}</a>
+                <a href="/eid/">{% trans "Eid Collection" %}</a>
+                <a href="/contact/">{% trans "Contact" %}</a>
                 <a href="{% url 'account_login' %}">{% trans "Login" %}</a> |
                 <a href="{% url 'register' %}">{% trans "Register" %}</a>
             </nav>
