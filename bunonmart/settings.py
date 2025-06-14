@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.microsoft',
 ]
 
-SITE_ID = 4
+SITE_ID = 1
 
 ACCOUNT_FORMS = {
     'signup': 'accounts.forms.CustomSignupForm',
