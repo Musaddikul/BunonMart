@@ -1,5 +1,7 @@
 from pathlib import Path
 import dj_database_url
+import socket
+from django.contrib.sites.models import Site
 from sqlalchemy import create_engine
 from decouple import config, Csv, UndefinedValueError
 from django.utils.translation import gettext_lazy as _
@@ -51,7 +53,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.microsoft',
 ]
 
-SITE_ID = 2
+try:
+    current_domain = socket.gethostname()
+    SITE_ID = Site.objects.get(domain__icontains=current_domain).id
+except:
+    SITE_ID = 2
 
 ACCOUNT_FORMS = {
     'signup': 'accounts.forms.CustomSignupForm',
